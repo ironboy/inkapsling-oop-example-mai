@@ -1,19 +1,47 @@
 class Person
 {
-    private string name;
-
-    // a private field - note small start letter "age"
-    private int;
+    // private fields - note small start letters "name", "age"
+    private string name = "Jane Doe";
+    private int age;
 
     // The constructor assigns through the property, so the setter runs
     // (and validates) already when the object is created.
-    public Person(string name, int age)
+    public Person(string? name, int age)
     {
-        this.name = name;
+        Name = name!;
         Age = age;
     }
 
-    // the property - the public, controlled door "Age"
+    // property for "Name" (public controlled "door")
+    public string Name
+    {
+        get { return name!; }
+        set
+        {
+            if (value == null)
+            {
+                Console.WriteLine("Name can not be null");
+                return;
+            }
+            if (value.Length < 1)
+            {
+                Console.WriteLine("Name cannot be an empty string");
+                return;
+            }
+            if (value.Length > 50)
+            {
+                Console.WriteLine("A name can be max 50 characters");
+                return;
+            }
+            // TODO: we could check other things too like 
+            // the characters needs to be letters rather than
+            // symobols or digits
+            name = value;
+
+        }
+    }
+
+    // property for "Age" (public controlled "door")
     public int Age
     {
         get { return age; }
@@ -21,7 +49,7 @@ class Person
         {
             if (value < 0 || value > 130)
             {
-                Console.WriteLine("Ogiltig ålder, ignoreras.");
+                Console.WriteLine("Invalid age (Must be 0-130.)");
                 return;
             }
             age = value;
