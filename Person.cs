@@ -4,11 +4,15 @@ class Person
     private string name = "Jane Doe";
     private int age;
 
-    // The constructor assigns through the property, so the setter runs
-    // (and validates) already when the object is created.
+    // If we want to use properties (getters/setters)
+    // when the object is constructed/instantiated
+    // we need a traditional constructor
+    // (rather than a primary constructor)
     public Person(string? name, int age)
     {
+        // This will run the setter for Name
         Name = name!;
+        // This will run the setter for Age
         Age = age;
     }
 
