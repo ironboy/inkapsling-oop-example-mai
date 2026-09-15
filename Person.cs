@@ -53,7 +53,6 @@ class Person
             // Trim - a string method that removes spaces at the start and end
             // of strings
             name = value.Trim();
-
         }
     }
 
