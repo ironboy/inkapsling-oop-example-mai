@@ -37,10 +37,22 @@ class Person
                 Console.WriteLine("A name can be max 50 characters");
                 return;
             }
-            // TODO: we could check other things too like 
-            // the characters needs to be letters rather than
-            // symobols or digits
-            name = value;
+            // All -> Using the All LINQ method to check that all characters
+            // in the string are letters, spaces or hyphens
+            if (!value.All(c => char.IsLetter(c) || c == ' ' || c == '-'))
+            {
+                Console.WriteLine("A name should only contain letters and spaces and hyphens");
+                return;
+            }
+            // Any -> Using then Any LINQ method to check that at least one (any)
+            // characters is a letter
+            if (!value.Any(c => char.IsLetter(c)))
+            {
+                Console.WriteLine("A name should have at least one letter!");
+            }
+            // Trim - a string method that removes spaces at the start and end
+            // of strings
+            name = value.Trim();
 
         }
     }
