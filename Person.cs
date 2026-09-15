@@ -15,7 +15,7 @@ class Person
     // property for "Name" (public controlled "door")
     public string Name
     {
-        get { return name!; }
+        get { return name; }
         set
         {
             if (value == null)
